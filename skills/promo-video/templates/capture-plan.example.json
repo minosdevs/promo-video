@@ -1,0 +1,58 @@
+{
+  "$comment": "Plan de capture declaratif pour scripts/capture.mjs. Exemple reel (Trkly) : page liste + filtres + fiche + generation IA. Un locator = {css} | {role,name,exact?} | {text,exact?} | {label} + optionnel {within: <locator>, nth: 0}.",
+  "base": "http://localhost:3010",
+  "out": "public/shots",
+  "viewport": { "width": 1920, "height": 1080 },
+  "scale": 2,
+  "locale": "fr-FR",
+  "hideCss": "",
+  "steps": [
+    { "goto": "/" },
+    { "waitFor": { "role": "button", "name": "Plateforme" } },
+    { "shot": "apps-default" },
+    { "box": "badgeCount", "locator": { "css": "span", "hasText": "^\\d{1,3}[\\s  ]\\d{3}$" } },
+    { "box": "searchInput", "locator": { "css": "input[name=q]" } },
+    { "box": "btnPlatform", "locator": { "role": "button", "name": "Plateforme" } },
+    { "box": "btnSort", "locator": { "role": "button", "name": "Trier par" } },
+    { "box": "row0", "locator": { "css": "a[href^='/app/']" } },
+
+    { "click": { "role": "button", "name": "Plateforme" } },
+    { "waitFor": { "css": "div.absolute.z-30" } },
+    { "box": "optIos", "locator": { "role": "button", "name": "iOS", "exact": true, "within": { "css": "div.absolute.z-30" } } },
+    { "shot": "apps-platform-open" },
+    { "click": { "role": "button", "name": "iOS", "exact": true, "within": { "css": "div.absolute.z-30" } } },
+    { "settle": true },
+    { "shot": "apps-ios" },
+
+    { "goto": "/?q=sober&platform=ios" },
+    { "shot": "apps-search" },
+    { "box": "searchRow0", "locator": { "css": "a[href^='/app/']" } },
+
+    { "goto": "/app/3643461f-0f47-4a93-b014-f9fcd35b5746" },
+    { "waitFor": { "css": "h1" } },
+    { "shot": "detail-top" },
+    { "box": "detailStats", "locator": { "css": "div.grid.grid-cols-1.divide-y" } },
+    { "box": "detailRealPrice", "locator": { "text": "Prix réel", "exact": true } },
+    { "box": "btnClone", "locator": { "role": "link", "name": "Cloner cette app" } },
+
+    { "viewport": { "width": 1920, "height": 3400 }, "group": "tall" },
+    { "goto": "/app/3643461f-0f47-4a93-b014-f9fcd35b5746" },
+    { "waitFor": { "css": "h1" } },
+    { "shot": "detail-tall" },
+    { "box": "suggestionsSection", "locator": { "css": "div.soft-card", "has": { "text": "Features à ajouter" } } },
+    { "box": "reviewsSection", "locator": { "css": "div.soft-card", "has": { "text": "^Avis négatifs \\(\\d+\\)$" } } },
+    { "viewport": { "width": 1920, "height": 1080 }, "group": null },
+
+    { "goto": "/creative/3643461f-0f47-4a93-b014-f9fcd35b5746?tab=prompt&autogen=1", "waitUntil": "domcontentloaded" },
+    { "waitFor": { "text": "Génération en cours" }, "timeout": 15000, "optional": true },
+    { "wait": 1500 },
+    { "shot": "clone-loading" },
+    { "waitGone": { "text": "Génération en cours" }, "timeout": 300000, "optional": true },
+    { "settle": true },
+    { "click": { "css": "div.soft-card button", "nth": 1 } },
+    { "wait": 800 },
+    { "shot": "clone-done" },
+    { "box": "cloneText", "locator": { "css": "div.max-h-\\[32rem\\]" } },
+    { "innerText": { "css": "div.max-h-\\[32rem\\]" }, "save": "clone-prompt.txt" }
+  ]
+}

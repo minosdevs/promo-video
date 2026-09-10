@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "promo-video",
+  "version": "1.0.0",
+  "description": "Video marketing / demo produit animee pour un SaaS avec Remotion : scenario valide, captures Playwright des vraies pages animees dans une fenetre navigateur (zooms, curseur, surlignages, scroll), musique et bruitages synthetises libres de droits, rendu MP4 verifie. Commande : /promo-video <produit>.",
+  "author": {
+    "name": "Minos",
+    "url": "https://github.com/minosdevs"
+  },
+  "homepage": "https://github.com/minosdevs/promo-video",
+  "repository": "https://github.com/minosdevs/promo-video",
+  "license": "MIT",
+  "keywords": [
+    "remotion",
+    "video",
+    "marketing",
+    "demo",
+    "saas",
+    "motion-design",
+    "playwright",
+    "screen-capture",
+    "product-video",
+    "launch"
+  ]
+}

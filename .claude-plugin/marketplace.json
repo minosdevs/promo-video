@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "minosdevs-promo-video",
+  "description": "Plugins Claude Code par Minos (@minosdevs). promo-video : une video marketing animee de ton SaaS, a partir du vrai produit.",
+  "owner": {
+    "name": "Minos",
+    "url": "https://github.com/minosdevs"
+  },
+  "plugins": [
+    {
+      "name": "promo-video",
+      "description": "Produit qui tourne en local -> video marketing 16:9 (~40 s) rendue en MP4. Scenario valide avec toi, captures Playwright des vraies pages animees (zooms camera, curseur qui clique, surlignages, scroll, saisie), musique + SFX synthetises, verification par stills. Commande : /promo-video <produit>.",
+      "author": {
+        "name": "Minos",
+        "url": "https://github.com/minosdevs"
+      },
+      "category": "productivity",
+      "source": "./",
+      "homepage": "https://github.com/minosdevs/promo-video"
+    }
+  ]
+}

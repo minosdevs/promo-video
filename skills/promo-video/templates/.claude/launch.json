@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "remotion-studio",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["remotion", "studio", "--port", "3012", "--no-open"],
+      "port": 3012
+    }
+  ]
+}

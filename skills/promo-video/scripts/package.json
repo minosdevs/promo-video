@@ -1,0 +1,9 @@
+{
+  "name": "promo-video-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Scripts du skill promo-video : setup, capture Playwright, musique, probe. Playwright s'installe dans le projet Remotion généré (setup.mjs), pas ici.",
+  "scripts": {
+    "music": "node make-music.mjs"
+  }
+}
